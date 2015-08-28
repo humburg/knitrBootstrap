@@ -35,9 +35,14 @@ button_types <- c("source" = "btn-primary",
                  "warning" = "btn-warning",
                  "error" = "btn-danger")
 #" @export
-simple_document <- function(css = NULL, theme = NULL, highlight = NULL, ...){
+simple_document <- function(css = NULL, theme = NULL, highlight = NULL, pandoc_args = NULL, ...){
   theme <- theme %||% "default"
   highlight <- highlight %||% "default"
+   pandoc_args <- pandoc_args %||% c(
+                        "--no-wrap",
+                        "--variable",
+                        "mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+                  )
 
   results <- rmarkdown::html_document(
     highlight = NULL,
@@ -52,11 +57,7 @@ simple_document <- function(css = NULL, theme = NULL, highlight = NULL, ...){
     template =
       system.file(
         package="knitrBootstrap", "rmarkdown/rmd/default.html"),
-        pandoc_args = c(
-                        "--no-wrap",
-                        "--variable",
-                        "mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
-                        ),
+        pandoc_args = check_pandoc_args(pandoc_args),
         self_contained = FALSE, ...)
 
   results$knitr <- list(
@@ -68,9 +69,14 @@ simple_document <- function(css = NULL, theme = NULL, highlight = NULL, ...){
 }
 
 #" @export
-bootstrap_document <- function(css = NULL, theme = NULL, highlight = NULL, ...){
+bootstrap_document <- function(css = NULL, theme = NULL, highlight = NULL, pandoc_args = NULL, ...){
   theme <- theme %||% "default"
   highlight <- highlight %||% "default"
+  pandoc_args <- pandoc_args %||% c(
+                        "--no-wrap",
+                        "--variable",
+                        "mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+                  )
 
   results <- rmarkdown::html_document(
     highlight = NULL,
@@ -82,11 +88,7 @@ bootstrap_document <- function(css = NULL, theme = NULL, highlight = NULL, ...){
       html_dependency_knitrBootstrap()
      ),
     template=system.file(package="knitrBootstrap", "rmarkdown/rmd/default.html"),
-        pandoc_args = c(
-                        "--no-wrap",
-                        "--variable",
-                        "mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
-                        ),
+        pandoc_args = check_pandoc_args(pandoc_args),
       self_contained=FALSE, ...)
 
   results$knitr <- list(
