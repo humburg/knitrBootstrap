@@ -18,7 +18,7 @@
 #'   theme='Slate', theme.chooser=TRUE, highlight.chooser=TRUE))
 #'}
 #' @import knitr rmarkdown markdown
-#' @name knirBootstrap
+#' @name knitrBootstrap
 #' @docType package
 NULL
 
