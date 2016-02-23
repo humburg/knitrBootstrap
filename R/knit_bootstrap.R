@@ -57,8 +57,7 @@ simple_document <- function(css = NULL, theme = NULL, highlight = NULL, pandoc_a
     template =
       system.file(
         package="knitrBootstrap", "rmarkdown/rmd/default.html"),
-        pandoc_args = check_pandoc_args(pandoc_args),
-        self_contained = FALSE, ...)
+        pandoc_args = check_pandoc_args(pandoc_args), ...)
 
   results$knitr <- list(
     opts_chunk = list(tidy=FALSE, highlight=FALSE),
