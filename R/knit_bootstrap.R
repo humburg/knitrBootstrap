@@ -88,8 +88,7 @@ bootstrap_document <- function(css = NULL, theme = NULL, highlight = NULL, pando
       html_dependency_knitrBootstrap()
      ),
     template=system.file(package="knitrBootstrap", "rmarkdown/rmd/default.html"),
-        pandoc_args = check_pandoc_args(pandoc_args),
-      self_contained=FALSE, ...)
+        pandoc_args = check_pandoc_args(pandoc_args), ...)
 
   results$knitr <- list(
                        opts_chunk = list(tidy=FALSE, highlight=FALSE),
@@ -177,9 +176,9 @@ thumbnail_plot_hook <- function(x, options){
   }
   fig <- tags$a(href = "#", class = "thumbnail", img)
   if (options$fig.show == "hold"){
-    fig <- tags$div(class=thumbnail_size, fig) 
+    fig <- tags$div(class=thumbnail_size, fig)
   } else{ #only one figure from this code block so center it
-    fig <- tags$div(class = c("figure", calc_offset(thumbnail_size), 
+    fig <- tags$div(class = c("figure", calc_offset(thumbnail_size),
                               thumbnail_size), fig, caption)
     fig <- tags$div(class = c("row"), fig)
   }
