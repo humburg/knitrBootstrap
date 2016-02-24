@@ -34,7 +34,7 @@ button_types <- c("source" = "btn-primary",
                  "message" = "btn-info",
                  "warning" = "btn-warning",
                  "error" = "btn-danger")
-#" @export
+#' @export
 simple_document <- function(css = NULL, theme = NULL, highlight = NULL, pandoc_args = NULL, ...){
   theme <- theme %||% "default"
   highlight <- highlight %||% "default"
