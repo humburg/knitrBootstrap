@@ -67,7 +67,7 @@ simple_document <- function(css = NULL, theme = NULL, highlight = NULL, pandoc_a
   results
 }
 
-#" @export
+#' @export
 bootstrap_document <- function(css = NULL, theme = NULL, highlight = NULL, pandoc_args = NULL, ...){
   theme <- theme %||% "default"
   highlight <- highlight %||% "default"
